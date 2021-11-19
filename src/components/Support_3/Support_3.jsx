@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
-import image from './images/content.jpg'
+import image from './images/support.jpg';
 import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
@@ -39,7 +39,7 @@ function Support_3() {
 
   const runNext = () => {
     dispatch({
-      type: 'UPDATE_FEELINGS',
+      type: 'UPDATE_SUPPORT',
       payload: value
     })
   };
@@ -49,10 +49,10 @@ function Support_3() {
   };
 
   return (
-    <div className="feelings">
+    <div className="support">
       <Card sx={{ maxWidth: 500 }}>
         <Typography variant="h3" color="text.primary">
-            Content
+            Support
         </Typography>
         <CardHeader
           title="Self Reflection"
@@ -66,7 +66,7 @@ function Support_3() {
         />
         <CardContent>
           <Typography variant="h6" color="text.secondary">
-            Staying up to speed on the material being can be a daunting task. On a scale from 1 to 5, with 1 being poor and 5 being excellent, please tell us how well you understand the content of this course.
+            A successful program is dependent on a great support system. On a scale from 1 to 5, with 1 being poor and 5 being excellent, please tell us how well you feel supported at Prime.
           </Typography>
         </CardContent>
         <FormControl variant="standard" sx={{ml: 1, mb: 3, minWidth: 120 }}>
@@ -90,7 +90,7 @@ function Support_3() {
         </FormControl>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
           <div className="buttonDiv">
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/content" style={{ color: 'inherit', textDecoration: 'inherit'}}>
               <Button onClick={runPrevious} size="large" variant="contained" startIcon={<NavigateBeforeSharpIcon fontSize="large"/>}>
                   Previous
               </Button>

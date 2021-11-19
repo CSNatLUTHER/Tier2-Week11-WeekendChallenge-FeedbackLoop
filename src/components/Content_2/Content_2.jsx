@@ -49,7 +49,7 @@ function Content_2() {
   };
 
   return (
-    <div className="feelings">
+    <div className="content">
       <Card sx={{ maxWidth: 500 }}>
         <Typography variant="h3" color="text.primary">
             Content

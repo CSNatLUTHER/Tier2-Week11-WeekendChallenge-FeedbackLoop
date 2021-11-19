@@ -28,6 +28,10 @@ const feedback = (state = {
         state = {...state, content:action.payload};
         return state;
     }
+    else if(action.type === 'UPDATE_SUPPORT'){
+        state = {...state, support:action.payload};
+        return state;
+    }
     return state;
   }; // end pizzaListReducer
 
