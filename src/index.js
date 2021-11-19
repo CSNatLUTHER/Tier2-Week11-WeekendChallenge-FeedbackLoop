@@ -32,6 +32,10 @@ const feedback = (state = {
         state = {...state, support:action.payload};
         return state;
     }
+    else if(action.type === 'UPDATE_COMMENTS'){
+        state = {...state, comments:action.payload};
+        return state;
+    }
     return state;
   }; // end pizzaListReducer
 

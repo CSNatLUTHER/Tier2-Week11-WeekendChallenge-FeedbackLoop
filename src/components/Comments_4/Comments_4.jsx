@@ -1,25 +1,22 @@
 import React from 'react';
-import './Support_3.css';
+import './Comments_4.css';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button} from '@mui/material';
-import image from './images/support.jpg';
+import image from './images/comments.jpg';
 import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { TextareaAutosize } from '@mui/base';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 
-function Support_3() {
+function Comments_4() {
 
 
   const [value, setValue] = React.useState();
@@ -39,7 +36,7 @@ function Support_3() {
 
   const runNext = () => {
     dispatch({
-      type: 'UPDATE_SUPPORT',
+      type: 'UPDATE_COMMENTS',
       payload: value
     })
   };
@@ -49,10 +46,10 @@ function Support_3() {
   };
 
   return (
-    <div className="support">
+    <div className="comments">
       <Card sx={{ maxWidth: 500 }}>
         <Typography variant="h3" color="text.primary">
-            Support
+            Comments
         </Typography>
         <CardHeader
           title="Self Reflection"
@@ -66,28 +63,19 @@ function Support_3() {
         />
         <CardContent>
           <Typography variant="h6" color="text.secondary">
-            A successful program is dependent on a great support system. On a scale from 1 to 5, with 1 being poor and 5 being excellent, please tell us how well you feel supported at Prime.
+            There is always a topic that may not get covered in a survey. 
+            This is a section is to allow for any additional comments you may want to share.
           </Typography>
         </CardContent>
-        <FormControl variant="standard" sx={{ml: 1, mb: 3, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Select Value</InputLabel>
-          <Select
-            labelId="value-select"
-            id="value-select"
-            value={value}
+        <CardContent>
+          <TextareaAutosize
+            aria-label="minimum height"
+            minRows={3}
+            placeholder="Add comments here..."
+            style={{ width: 350 }}
             onChange={handleChange}
-            label="Select Value"
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </Select>
-        </FormControl>
+          />
+        </CardContent>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
           <div className="buttonDiv">
             <Link to="/content" style={{ color: 'inherit', textDecoration: 'inherit'}}>
@@ -95,7 +83,7 @@ function Support_3() {
                   Previous
               </Button>
             </Link>
-            <Link to="/comments" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/feedback" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <Button onClick={runNext} size="large" value="Next" variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
               Next
             </Button>
@@ -108,4 +96,4 @@ function Support_3() {
   );
 }
 
-export default Support_3;
+export default Comments_4;
