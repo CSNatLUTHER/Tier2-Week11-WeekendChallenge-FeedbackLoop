@@ -1,0 +1,11 @@
+.review{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.buttonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
