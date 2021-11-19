@@ -70,7 +70,7 @@ function Comments_4() {
         <CardContent>
           <TextareaAutosize
             aria-label="minimum height"
-            minRows={3}
+            minRows={4}
             placeholder="Add comments here..."
             style={{ width: 350 }}
             onChange={handleChange}
@@ -78,12 +78,12 @@ function Comments_4() {
         </CardContent>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
           <div className="buttonDiv">
-            <Link to="/content" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/support" style={{ color: 'inherit', textDecoration: 'inherit'}}>
               <Button onClick={runPrevious} size="large" variant="contained" startIcon={<NavigateBeforeSharpIcon fontSize="large"/>}>
                   Previous
               </Button>
             </Link>
-            <Link to="/feedback" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/review" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <Button onClick={runNext} size="large" value="Next" variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
               Next
             </Button>

@@ -22,7 +22,7 @@ function App() {
             <Route path="/content" element={<Content_2 />} ></Route>
             <Route path="/support" element={<Support_3 />} ></Route>
             <Route path="/comments" element={<Comments_4 />} ></Route>
-            {/* <Route path="/recap" element={<Recap_5 />} ></Route> */}
+            {/* <Route path="/review" element={<Review_5 />} ></Route> */}
           </Routes>
         </BrowserRouter>
     </div>
