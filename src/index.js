@@ -12,8 +12,22 @@ import registerServiceWorker from './registerServiceWorker';
 // reducer
 // creating a global variable "pizza", that is given a state and action 
 // every time an action takes place, it will run the reducer
-const feedback = (state = {}, action) => {
-    console.log('In feedback reducer', action);
+const feedback = (state = {
+                    feelings:0,
+                    content: 0,
+                    support:0,
+                    comments:''
+                        }, 
+                 action) => {
+    console.log('feedback payload:', action.payload);
+    if(action.type === 'UPDATE_FEELINGS'){
+        state = {...state, feelings:action.payload};
+        return state;
+    }
+    else if(action.type === 'UPDATE_CONTENT'){
+        state = {...state, content:action.payload};
+        return state;
+    }
     return state;
   }; // end pizzaListReducer
 
@@ -38,7 +52,6 @@ const feedback = (state = {}, action) => {
       <Provider store={storeInstance}>
         <App />
       </Provider>
-  
     </React.StrictMode>,
     document.getElementById('root'));
   
