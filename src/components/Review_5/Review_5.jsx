@@ -10,24 +10,17 @@ import image from './images/review.jpg';
 import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
-import { Avatar } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircleOutline';
-import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded';
 
 
-function generate(element) {
-  return [0, 1, 2, 3].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
 
 function Review_5() {
 
+  const feedback = useSelector(store => store.feedback);
+  
 
   const [value, setValue] = React.useState();
   const handleChange = (event) => {
@@ -78,17 +71,43 @@ function Review_5() {
         </CardContent>
         <CardContent>
           <List dense={true}>
-            {generate(
               <ListItem>
                 <ListItemAvatar>
                     <CheckCircleIcon />
                 </ListItemAvatar>
                 <ListItemText
-                  primary="Single-line item"
-                  secondary="value"
+                  primary="How You're Feeling:"
+                  secondary= {"Rating: " + feedback.feelings}
                 />
               </ListItem>
-            )}
+              <ListItem>
+                <ListItemAvatar>
+                    <CheckCircleIcon />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="How Well You Understand the Content:"
+                  secondary={"Rating: " + feedback.content}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemAvatar>
+                    <CheckCircleIcon />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="How Well You Feel Supported:"
+                  secondary={"Rating: " + feedback.support}
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemAvatar>
+                    <CheckCircleIcon />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Additional Comments You Shared"
+                  secondary={feedback.comments}
+                />
+              </ListItem>
+
           </List>
         </CardContent>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
