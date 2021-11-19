@@ -10,11 +10,21 @@ import image from './images/review.jpg';
 import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
-import { TextareaAutosize } from '@mui/base';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
+import { Avatar } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded';
 
 
+function generate(element) {
+  return [0, 1, 2, 3].map((value) =>
+    React.cloneElement(element, {
+      key: value,
+    }),
+  );
+}
 
 function Review_5() {
 
@@ -49,7 +59,7 @@ function Review_5() {
     <div className="review">
       <Card sx={{ maxWidth: 500 }}>
         <Typography variant="h3" color="text.primary">
-            Comments
+            Review
         </Typography>
         <CardHeader
           title="Self Reflection"
@@ -57,24 +67,29 @@ function Review_5() {
         />
         <CardMedia
           component="img"
-          height="250"
+          height="100"
           image={image}
           alt="Feelings"
         />
         <CardContent>
           <Typography variant="h6" color="text.secondary">
-            There is always a topic that may not get covered in a survey. 
-            This is a section is to allow for any additional comments you may want to share.
+            Thank you so much for participating. Please verify your responses before submitting.
           </Typography>
         </CardContent>
         <CardContent>
-          <TextareaAutosize
-            aria-label="minimum height"
-            minRows={4}
-            placeholder="Add comments here..."
-            style={{ width: 350 }}
-            onChange={handleChange}
-          />
+          <List dense={true}>
+            {generate(
+              <ListItem>
+                <ListItemAvatar>
+                    <CheckCircleIcon />
+                </ListItemAvatar>
+                <ListItemText
+                  primary="Single-line item"
+                  secondary="value"
+                />
+              </ListItem>
+            )}
+          </List>
         </CardContent>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
           <div className="buttonDiv">
