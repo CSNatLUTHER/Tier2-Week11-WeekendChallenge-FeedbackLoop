@@ -14,15 +14,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 
 function Support_3() {
 
+  const feedback = useSelector(store => store.feedback);
 
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(feedback.support);
   const handleChange = (event) => {
     setValue(event.target.value);
   };

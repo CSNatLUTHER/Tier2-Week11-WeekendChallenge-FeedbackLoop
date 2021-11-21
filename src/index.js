@@ -13,9 +13,9 @@ import registerServiceWorker from './registerServiceWorker';
 // creating a global variable "pizza", that is given a state and action 
 // every time an action takes place, it will run the reducer
 const feedback = (state = {
-                    feelings:0,
-                    content: 0,
-                    support:0,
+                    feelings:'',
+                    content: '',
+                    support:'',
                     comments:''
                         }, 
                  action) => {

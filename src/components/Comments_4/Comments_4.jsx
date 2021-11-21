@@ -11,15 +11,16 @@ import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
 import { TextareaAutosize } from '@mui/base';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 
 function Comments_4() {
 
+  const feedback = useSelector(store => store.feedback);
 
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState(feedback.comments);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -72,6 +73,7 @@ function Comments_4() {
             aria-label="minimum height"
             minRows={4}
             placeholder="Add comments here..."
+            value={value}
             style={{ width: 350, height: 65, maxWidth: 450, minWidth: 250, maxHeight: 350, minHeight: 25 }}
             onChange={handleChange}
           />

@@ -13,12 +13,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 
 function Feelings_1() {
 
-  const [value, setValue] = React.useState("");
+  const feedback = useSelector(store => store.feedback);
+
+  const [value, setValue] = React.useState(feedback.feelings);
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -70,7 +72,7 @@ function Feelings_1() {
             onChange={handleChange}
             label="Select Value"
           >
-            <MenuItem value={value}>
+            <MenuItem value="">
               <em>None</em>
             </MenuItem>
             <MenuItem value={1}>1</MenuItem>
