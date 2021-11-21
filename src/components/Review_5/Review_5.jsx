@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircleOutline';
+import axios from 'axios';
 
 
 
@@ -38,10 +39,11 @@ function Review_5() {
   const dispatch = useDispatch()
 
   const runNext = () => {
-    dispatch({
-      type: 'UPDATE_COMMENTS',
-      payload: value
-    })
+    axios.post('/api/feedback', feedback ).then((response) => {
+      console.log('Back from POST', response);
+    }).catch((err) => {
+      console.log('Error in AXIOS PUT', err);
+    });
   };
 
   const runPrevious = () => {
@@ -60,7 +62,7 @@ function Review_5() {
         />
         <CardMedia
           component="img"
-          height="100"
+          height="150"
           image={image}
           alt="Feelings"
         />
@@ -68,8 +70,6 @@ function Review_5() {
           <Typography variant="h6" color="text.secondary">
             Thank you so much for participating. Please verify your responses before submitting.
           </Typography>
-        </CardContent>
-        <CardContent>
           <List dense={true}>
               <ListItem>
                 <ListItemAvatar>
@@ -91,7 +91,7 @@ function Review_5() {
               </ListItem>
               <ListItem>
                 <ListItemAvatar>
-                    <CheckCircleIcon />
+                    <CheckCircleIcon/>
                 </ListItemAvatar>
                 <ListItemText
                   primary="How Well You Feel Supported:"
