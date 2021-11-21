@@ -10,9 +10,8 @@ import logger from 'redux-logger'; //this essentially acts as a console log
 import registerServiceWorker from './registerServiceWorker';
 
 // reducer
-// creating a global variable "pizza", that is given a state and action 
-// every time an action takes place, it will run the reducer
-const feedback = (state = {
+
+  const feedback = (state = {
                     feelings:'',
                     content: '',
                     support:'',
@@ -47,12 +46,21 @@ const feedback = (state = {
     }
     return state;
   }; // end feedback reducer
-   
+  
+  const surveyResults = (state = [], action) => {
+    if (action.type === 'SET_RESULTS'){
+      state = action.payload;
+      return state;
+    }
+    return state;
+  }
+
   // a store
   const storeInstance = createStore(
       combineReducers(
         {
-          feedback
+          feedback,
+          surveyResults
         }
       ),
       applyMiddleware(

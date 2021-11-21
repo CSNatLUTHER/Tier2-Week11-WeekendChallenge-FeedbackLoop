@@ -74,7 +74,7 @@ function Comments_4() {
             minRows={4}
             placeholder="Add comments here..."
             value={value}
-            style={{ width: 350, height: 65, maxWidth: 450, minWidth: 250, maxHeight: 350, minHeight: 25 }}
+            style={{ width: 350, height: 65, maxWidth: 450, minWidth: 250, maxHeight: 350, minHeight: 25, fontSize:12 }}
             onChange={handleChange}
           />
         </CardContent>

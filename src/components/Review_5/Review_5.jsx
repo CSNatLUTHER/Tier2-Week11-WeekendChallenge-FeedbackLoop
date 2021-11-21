@@ -23,8 +23,6 @@ function Review_5() {
   const feedback = useSelector(store => store.feedback);
   
 
-  const [value, setValue] = React.useState();
-
   let readableTime = new Date().toLocaleDateString( 'en-US',{
     year: 'numeric',
     month: 'long',

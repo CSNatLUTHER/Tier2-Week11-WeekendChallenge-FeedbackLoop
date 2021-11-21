@@ -1,7 +1,6 @@
 import React from 'react';
 import './ThankYou_6.css';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -9,13 +8,7 @@ import { Button} from '@mui/material';
 import image from './images/thankyou.jpg';
 import { Box } from '@mui/system';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
-import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { List, ListItem, ListItemText, ListItemAvatar } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircleOutline';
-import axios from 'axios';
-
 
 
 function ThankYou_6() {
