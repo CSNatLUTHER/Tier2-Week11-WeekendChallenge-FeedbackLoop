@@ -95,11 +95,16 @@ function Support_3() {
                   Previous
               </Button>
             </Link>
-            <Link to="/comments" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <Button onClick={runNext} size="large" value="Next" variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
+            { value>0?
+              <Link to="/comments" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+              <Button size="large" onClick={runNext} variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
+                Next
+              </Button>
+              </Link>:
+              <Button size="large" onClick={runNext} variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />} disabled>
               Next
             </Button>
-            </Link>
+            }
 
           </div>
         </Box>

@@ -18,7 +18,7 @@ import {Link} from 'react-router-dom'
 
 function Feelings_1() {
 
-  const [value, setValue] = React.useState();
+  const [value, setValue] = React.useState("");
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -34,10 +34,10 @@ function Feelings_1() {
   const dispatch = useDispatch()
 
   const runNext = () => {
-    dispatch({
-      type: 'UPDATE_FEELINGS',
-      payload: value
-    })
+      dispatch({
+        type: 'UPDATE_FEELINGS',
+        payload: value
+      })
   };
 
   return (
@@ -70,7 +70,7 @@ function Feelings_1() {
             onChange={handleChange}
             label="Select Value"
           >
-            <MenuItem value="">
+            <MenuItem value={value}>
               <em>None</em>
             </MenuItem>
             <MenuItem value={1}>1</MenuItem>
@@ -82,11 +82,16 @@ function Feelings_1() {
         </FormControl>
         <Box sx={{ mt: 1, ml: 1, mb: 2 }}>
           <div className="buttonDiv">
-            <Link to="/content" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <Button size="large" onClick={runNext} variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
+            { value>0?
+              <Link to="/content" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+              <Button size="large" onClick={runNext} variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
+                Next
+              </Button>
+              </Link>:
+              <Button size="large" onClick={runNext} variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />} disabled>
               Next
             </Button>
-            </Link>
+            }
           </div>
         </Box>
       </Card>

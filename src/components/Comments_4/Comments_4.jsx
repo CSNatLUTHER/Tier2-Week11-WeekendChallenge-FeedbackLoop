@@ -64,7 +64,7 @@ function Comments_4() {
         <CardContent>
           <Typography variant="h6" color="text.secondary">
             There is always a topic that may not get covered in a survey. 
-            This is a section is to allow for any additional comments you may want to share.
+            This section is to allow for any additional comments you may want to share.
           </Typography>
         </CardContent>
         <CardContent>
@@ -72,7 +72,7 @@ function Comments_4() {
             aria-label="minimum height"
             minRows={4}
             placeholder="Add comments here..."
-            style={{ width: 350 }}
+            style={{ width: 350, height: 65, maxWidth: 450, minWidth: 250, maxHeight: 350, minHeight: 25 }}
             onChange={handleChange}
           />
         </CardContent>
