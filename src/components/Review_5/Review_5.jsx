@@ -24,9 +24,6 @@ function Review_5() {
   
 
   const [value, setValue] = React.useState();
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   let readableTime = new Date().toLocaleDateString( 'en-US',{
     year: 'numeric',
@@ -40,7 +37,8 @@ function Review_5() {
 
   const runNext = () => {
     axios.post('/api/feedback', feedback ).then((response) => {
-      console.log('Back from POST', response);
+      console.log('Back from POST', response.status);
+        dispatch({type:'CLEAR_VALUES'})
     }).catch((err) => {
       console.log('Error in AXIOS PUT', err);
     });
@@ -117,7 +115,7 @@ function Review_5() {
                   Back
               </Button>
             </Link>
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link to="/thankyou" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <Button onClick={runNext} size="large" value="Next" variant="contained" endIcon={<NavigateNextSharpIcon fontSize="large" />}>
               Submit
             </Button>

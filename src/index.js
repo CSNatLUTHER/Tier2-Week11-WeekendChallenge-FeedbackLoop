@@ -36,10 +36,18 @@ const feedback = (state = {
         state = {...state, comments:action.payload};
         return state;
     }
+    else if(action.type === 'CLEAR_VALUES'){
+      state = {
+        feelings:'',
+        content: '',
+        support:'',
+        comments:''
+            }
+      return state;
+    }
     return state;
-  }; // end pizzaListReducer
-
-  
+  }; // end feedback reducer
+   
   // a store
   const storeInstance = createStore(
       combineReducers(

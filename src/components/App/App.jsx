@@ -6,6 +6,7 @@ import Content_2 from '../Content_2/Content_2';
 import Support_3 from '../Support_3/Support_3';
 import Comments_4 from '../Comments_4/Comments_4';
 import Review_5 from '../Review_5/Review_5'
+import ThankYou_6 from '../ThankYou_6/ThankYou_6';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router';
 import { Route } from 'react-router';
@@ -24,6 +25,7 @@ function App() {
             <Route path="/support" element={<Support_3 />} ></Route>
             <Route path="/comments" element={<Comments_4 />} ></Route>
             <Route path="/review" element={<Review_5 />} ></Route>
+            <Route path="/thankyou" element={<ThankYou_6 />} ></Route>
           </Routes>
         </BrowserRouter>
     </div>

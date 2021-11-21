@@ -60,7 +60,7 @@ function Feelings_1() {
         />
         <CardContent>
           <Typography variant="h6" color="text.secondary">
-            It's important to take to take time and reflect inward. On a scale from 1 to 5, with 1 being poor and 5 being excellent, please tell us how you're feeling today.
+            It's important to take time and reflect inward. On a scale from 1 to 5, with 1 being poor and 5 being excellent, please tell us how you're feeling today.
           </Typography>
         </CardContent>
         <FormControl variant="standard" sx={{ml: 1, mb: 3, minWidth: 120 }}>
