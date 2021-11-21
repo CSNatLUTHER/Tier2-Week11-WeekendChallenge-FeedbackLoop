@@ -22,32 +22,37 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import '../Admin/Admin.css'
+import { useSelector } from 'react-redux';
 
-function createData (id, feelings, content, support, comments) {
+
+
+function createData (id, feelings, content, support, comments, remove) {
   return {
     id,
     feelings,
     content,
     support,
     comments,
+    remove
   };
 }
 
-const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Donut', 452, 25.0, 51, 4.9),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-  createData('Honeycomb', 408, 3.2, 87, 6.5),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0),
-  createData('KitKat', 518, 26.0, 65, 7.0),
-  createData('Lollipop', 392, 0.2, 98, 0.0),
-  createData('Marshmallow', 318, 0, 81, 2.0),
-  createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0),
-];
+
+// const rows = [
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Donut', 452, 25.0, 51, 4.9),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+//   createData('Honeycomb', 408, 3.2, 87, 6.5),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Jelly Bean', 375, 0.0, 94, 0.0),
+//   createData('KitKat', 518, 26.0, 65, 7.0),
+//   createData('Lollipop', 392, 0.2, 98, 0.0),
+//   createData('Marshmallow', 318, 0, 81, 2.0),
+//   createData('Nougat', 360, 19.0, 9, 37.0),
+//   createData('Oreo', 437, 18.0, 63, 4.0),
+// ];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -82,9 +87,10 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'id',
-    numeric: false,
+    numeric: true,
     disablePadding: true,
     label: 'ID',
+
   },
   {
     id: 'feelings',
@@ -102,23 +108,23 @@ const headCells = [
     id: 'support',
     numeric: true,
     disablePadding: false,
-    label: 'Support)',
+    label: 'Support',
   },
   {
     id: 'comments',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Comments',
   },
 ];
 
 function EnhancedTableHead(props) {
+  console.log('enhancedTableHead Props:', props);
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
-
   return (
     <TableHead>
       <TableRow>
@@ -136,7 +142,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -169,6 +175,7 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
+  console.log('EnhancedTableToolbar Props:', props);
   const { numSelected } = props;
 
   return (
@@ -202,10 +209,11 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       )}
 
+
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
-            <DeleteIcon />
+            {/* <DeleteIcon /> */}
           </IconButton>
         </Tooltip>
       ) : (
@@ -224,6 +232,16 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function EnhancedTable() {
+
+  const results = useSelector(store => store.surveyResults);
+  console.log('admin results:', results);
+
+  const rows = 
+    results.map(result =>(createData(result.id, result.feeling, result.content, result.support, result.comments)))
+  ;
+
+  console.log(rows);
+
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('id');
   const [selected, setSelected] = React.useState([]);
@@ -274,13 +292,12 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
 
   return (
     <div className="table">
@@ -334,13 +351,14 @@ export default function EnhancedTable() {
                         id={labelId}
                         scope="row"
                         padding="none"
+                        width={10}
                       >
                         {row.id}
                       </TableCell>
-                      <TableCell align="right">{row.feelings}</TableCell>
-                      <TableCell align="right">{row.content}</TableCell>
-                      <TableCell align="right">{row.support}</TableCell>
-                      <TableCell align="right">{row.comments}</TableCell>
+                      <TableCell align="center" width={10}>{row.feelings}</TableCell>
+                      <TableCell align="center" width={10}>{row.content}</TableCell>
+                      <TableCell align="center" width={10}>{row.support}</TableCell>
+                      <TableCell align="left">{row.comments}</TableCell>
                     </TableRow>
                   );
                 })}
